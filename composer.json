@@ -13,6 +13,11 @@
       "Umanit\\DevBundle\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Umanit\\DevBundle\\": "tests/"
+    }
+  },
   "authors": [
     {
       "name": "Alexandre Emion",
