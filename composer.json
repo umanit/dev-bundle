@@ -16,13 +16,16 @@
     ],
     "require": {
         "php": "^8.2",
-        "symfony/framework-bundle": "^7.2",
+        "symfony/framework-bundle": "^6.4",
         "zenstruck/foundry": "^2.3",
         "spatie/phpunit-watcher": "^1.24",
         "phpunit/phpunit": "^11",
         "phparkitect/phparkitect": "^0.4",
         "zenstruck/mailer-test": "^1.4",
         "zenstruck/messenger-test": "^1.11",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "doctrine/doctrine-bundle": "^2.8",
+        "dama/doctrine-test-bundle": "^8.3",
+        "doctrine/orm": "^2.14"
     }
 }
