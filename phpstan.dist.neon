@@ -1,14 +1,4 @@
-includes:
-#    - vendor/phpstan/phpstan-symfony/extension.neon
-#    - vendor/phpstan/phpstan-symfony/rules.neon
-#    - phpstan-baseline.neon
-
 parameters:
-    level: 7
+    level: 9
     paths:
         - src/
-#    scanFiles:
-#        - vendor/symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php
-#    symfony:
-#        containerXmlPath: tests/config/App_KernelDevDebugContainer.xml
-#        constantHassers: false

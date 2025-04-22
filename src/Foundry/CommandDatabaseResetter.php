@@ -34,7 +34,11 @@ final readonly class CommandDatabaseResetter implements OrmResetter
             try {
                 /** @var AbstractPlatform $platform */
                 $platform = $connection->getDatabasePlatform();
-                $databases[$name] = $platform->quoteStringLiteral($connection->getDatabase());
+                $databaseName = $connection->getDatabase();
+                if (!$databaseName) {
+                    throw new \RuntimeException('Database name cannot be inferred.');
+                }
+                $databases[$name] = $platform->quoteStringLiteral($databaseName);
                 $connection->close();
             } catch (\Exception) {
                 // Si on n'arrive pas à récupérer le nom de la base de donnée de manière officielle,
