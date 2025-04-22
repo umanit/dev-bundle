@@ -1,0 +1,28 @@
+{
+    "name": "umanit/dev-bundle",
+    "description": "Helper classes and dependencies for usual dev environment",
+    "type": "symfony-bundle",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Umanit\\DevBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexandre Emion",
+            "email": "aemion@umanit.fr"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "symfony/framework-bundle": "^7.2",
+        "zenstruck/foundry": "^2.3",
+        "spatie/phpunit-watcher": "^1.24",
+        "phpunit/phpunit": "^11",
+        "phparkitect/phparkitect": "^0.4",
+        "zenstruck/mailer-test": "^1.4",
+        "zenstruck/messenger-test": "^1.11",
+        "phpstan/phpstan": "^1.10"
+    }
+}
