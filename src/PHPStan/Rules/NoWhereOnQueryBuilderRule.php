@@ -11,6 +11,9 @@ use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\TypeWithClassName;
 
+/**
+ * @template-implements Rule<Node\Expr\MethodCall>
+ */
 class NoWhereOnQueryBuilderRule implements Rule
 {
     public function getNodeType(): string

@@ -10,6 +10,9 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 
+/**
+ * @template-implements Rule<Node\Expr\FuncCall>
+ */
 class EnsureFunctionBackslashRule implements Rule
 {
     private const OPTIMIZED_FUNCTIONS = [

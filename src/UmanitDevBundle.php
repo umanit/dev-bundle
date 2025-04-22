@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Umanit\DevBundle;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -16,9 +17,10 @@ final class UmanitDevBundle extends AbstractBundle
 {
     public function configure(DefinitionConfigurator $definition): void
     {
+        /** @var ArrayNodeDefinition $root */
+        $root = $definition->rootNode();
         // @formatter:off
-        $definition
-            ->rootNode()
+        $root
             ->children()
                 ->scalarNode('database_resetter_command')
                     ->info(
@@ -28,11 +30,13 @@ TXT
                     )
                     ->defaultNull()
                 ->end()
-            ->end()
         ;
         // @formatter:on
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $command = $config['database_resetter_command'];

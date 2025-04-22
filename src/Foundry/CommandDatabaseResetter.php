@@ -17,6 +17,9 @@ use Zenstruck\Foundry\ORM\ResetDatabase\OrmResetter;
 
 final readonly class CommandDatabaseResetter implements OrmResetter
 {
+    /**
+     * @var array<string, string>
+     */
     private array $databases;
 
     public function __construct(
@@ -36,7 +39,9 @@ final readonly class CommandDatabaseResetter implements OrmResetter
             } catch (\Exception) {
                 // Si on n'arrive pas à récupérer le nom de la base de donnée de manière officielle,
                 // On se rabat sur le fonctionnement interne de doctrine (moins stable)
-                $databases[$name] = \sprintf("\'%s\'", $connection->getParams()['dbname']);
+                /** @var array{dbname: string} $params */
+                $params = $connection->getParams();
+                $databases[$name] = \sprintf("\'%s\'", $params['dbname']);
             }
             StaticDriver::setKeepStaticConnections(true);
         }
