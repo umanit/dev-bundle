@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Umanit\DevBundle\Foundry\Factory;
 
+use Umanit\DevBundle\Foundry\Randomizer\Randomizer;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 use Zenstruck\Foundry\Persistence\Proxy;
 
@@ -15,9 +16,18 @@ abstract class Factory extends PersistentProxyObjectFactory
 {
     private static int $incrementalId = 0;
 
-    public static function getIncrementalId(): int
+    private static Randomizer $randomizer;
+
+    protected static function getIncrementalId(): int
     {
         return self::$incrementalId++;
+    }
+
+    protected static function randomizer(): Randomizer
+    {
+        self::$randomizer ??= new Randomizer();
+
+        return self::$randomizer;
     }
 
     /**
@@ -45,6 +55,7 @@ abstract class Factory extends PersistentProxyObjectFactory
         }
 
         if (\is_array($value) && 0 !== $inTotal) {
+            // self::randomizer()->valueOrNull(self::faker()->randomElement($value))
             $randomKey = array_rand($value);
 
             return (random_int(1, $inTotal) <= $probability) ? $value[$randomKey] : null;
@@ -76,6 +87,8 @@ abstract class Factory extends PersistentProxyObjectFactory
         array $values,
         bool $alwaysAllValues = false
     ): array {
+        // Si alwaysAllValues = true -> valueOrNull
+        // Sinon utiliser faker -> randomElements
         $array = [];
 
         foreach ($values as $item) {
@@ -86,4 +99,8 @@ abstract class Factory extends PersistentProxyObjectFactory
 
         return (random_int(1, $inTotal) <= $probability) ? $array : [];
     }
+
+    // TODO
+    // 1/ méthode statique pour récup la classe avec les méthodes de "gamble"
+    // 2/ méthode statique pour avoir les static defaults -> tableau vide et utilisé dans la méthode defaults
 }
