@@ -30,7 +30,7 @@
     "zenstruck/foundry": "^2.3",
     "spatie/phpunit-watcher": "^1.24",
     "phpunit/phpunit": "^11",
-    "phparkitect/phparkitect": "^0.4",
+    "phparkitect/phparkitect": "^0.5.3",
     "zenstruck/mailer-test": "^1.4",
     "zenstruck/messenger-test": "^1.11",
     "phpstan/phpstan": "^1.10",
