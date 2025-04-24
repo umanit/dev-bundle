@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Akkalia\CoreBundle\Arkitect\Expression\ForClasses;
+namespace Umanit\DevBundle\Arkitect\Expression\ForClasses;
 
 use Arkitect\Analyzer\ClassDescription;
 use Arkitect\Analyzer\FullyQualifiedClassName;
