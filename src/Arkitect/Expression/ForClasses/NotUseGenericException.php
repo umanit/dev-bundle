@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Umanit\DevBundle\Arkitect\Expression\ForClasses;
+namespace Akkalia\CoreBundle\Arkitect\Expression\ForClasses;
 
 use Arkitect\Analyzer\ClassDescription;
+use Arkitect\Analyzer\FullyQualifiedClassName;
 use Arkitect\Expression\Description;
 use Arkitect\Expression\Expression;
 use Arkitect\Rules\Violation;
@@ -21,11 +22,16 @@ class NotUseGenericException implements Expression
     public function evaluate(ClassDescription $theClass, Violations $violations, string $because): void
     {
         foreach ($theClass->getDependencies() as $dependency) {
+            $extends = array_map(
+                static fn(FullyQualifiedClassName $class): string => $class->toString(),
+                $theClass->getExtends()
+            );
+
             if (
-                // The class depends on the \Exception class
-                \Exception::class === $dependency->getFQCN()->toString()
                 // The class doesn't extend the \Exception class
-                && \Exception::class !== $theClass->getExtends()?->toString()
+                !\in_array(\Exception::class, $extends, true)
+                // The class depends on the \Exception class
+                && \Exception::class === $dependency->getFQCN()->toString()
             ) {
                 $violation = Violation::createWithErrorLine(
                     $theClass->getFQCN(),
