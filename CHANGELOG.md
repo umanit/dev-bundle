@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2017-04-30
+
 ### Added
 
 - add multiple dependencies for static analyze
 
-## [1.0.0] - 2017-06-20
+### Changed
+
+- phparkitect: `NotAbuseFinalUsage` is triggered if an interface method called another one from the same
+
+## [1.0.0] - 2025-04-24
 
 ### Added
 
@@ -34,7 +40,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.0.0...HEAD
+[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.0...HEAD
+
+[1.1.0]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.0.0...1.1.0
 
 [1.0.0]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/0.0.3...1.0.0
 
