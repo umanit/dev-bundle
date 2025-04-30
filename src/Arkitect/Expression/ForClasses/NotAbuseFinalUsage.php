@@ -13,13 +13,18 @@ use Arkitect\Rules\Violations;
 use PhpParser\Error;
 use PhpParser\Node;
 use PhpParser\NodeFinder;
+use PhpParser\NodeTraverser;
+use PhpParser\NodeVisitor;
 use PhpParser\ParserFactory;
 
 class NotAbuseFinalUsage implements Expression
 {
     public function describe(ClassDescription $theClass, string $because): Description
     {
-        return new Description('should not as at least one of his "public" method calls another one', $because);
+        return new Description(
+            'should not as at least one of his interface methods calls another one from the same',
+            $because
+        );
     }
 
     public function evaluate(ClassDescription $theClass, Violations $violations, string $because): void
@@ -28,7 +33,7 @@ class NotAbuseFinalUsage implements Expression
             return;
         }
 
-        if (!$this->hasInternalPublicMethodCall($theClass->getFQCN())) {
+        if (!$this->hasInterdependentInterfaceMethods($theClass->getFQCN())) {
             return;
         }
 
@@ -41,15 +46,37 @@ class NotAbuseFinalUsage implements Expression
     }
 
     /**
-     * Parcourt l’AST d'une classe et retourne true si une méthode « public » appelle une autre méthode « public » de
-     * la même classe.
+     * Parcourt l’AST d'une classe et retourne true si une méthode d’interface appelle une autre méthode de la même
+     * interface.
      */
-    private function hasInternalPublicMethodCall(string $className): bool
+    private function hasInterdependentInterfaceMethods(string $className): bool
     {
-        /** @var class-string $className */
+        if (!class_exists($className)) {
+            return false;
+        }
+
+        $reflection = new \ReflectionClass($className);
+
+        // Collecte les méthodes publiques par interface
+        $interfaces = $reflection->getInterfaceNames();
+        $interfacesMethods = [];
+        foreach ($interfaces as $interface) {
+            $refInterface = new \ReflectionClass($interface);
+            $names = array_map(
+                static fn(\ReflectionMethod $m) => $m->getName(),
+                $refInterface->getMethods()
+            );
+
+            if (\count($names) > 1) {
+                $interfacesMethods[$interface] = $names;
+            }
+        }
+
+        if (empty($interfacesMethods)) {
+            return false;
+        }
 
         // Parsing de l’AST de la classe
-        $reflection = new \ReflectionClass($className);
         $file = $reflection->getFileName();
         if (false === $file) {
             throw new \RuntimeException(\sprintf('Cannot determine the file of the class %s', $className));
@@ -73,53 +100,60 @@ class NotAbuseFinalUsage implements Expression
 
         // Récupération de la classe dans l’AST
         $finder = new NodeFinder();
-        /** @var list<Node\Stmt\Class_> $classes */
-        $classes = $finder->findInstanceOf($ast, Node\Stmt\Class_::class);
-        $targetClass = null;
+        $traverser = new NodeTraverser();
+        $traverser->addVisitor(new NodeVisitor\NameResolver());
+        $ast = $traverser->traverse($ast);
 
-        foreach ($classes as $class) {
-            if ($class->name?->toString() === $reflection->getShortName()) {
-                $targetClass = $class;
-                break;
-            }
-        }
+        /** @var Node\Stmt\Class_|null $classNode */
+        $classNode = $finder->findFirst($ast, static function ($node) use ($className) {
+            return $node instanceof Node\Stmt\Class_
+                && isset($node->namespacedName)
+                && $className === $node->namespacedName->toString();
+        });
 
-        if (!$targetClass) {
+        if (null === $classNode) {
             throw new \RuntimeException(\sprintf('Class %s not found in file %s', $className, $file));
         }
 
-        // Récupération des méthodes « public »
-        $publicMethods = [];
-        foreach ($targetClass->getMethods() as $method) {
-            if ($method->isPublic()) {
-                $publicMethods[] = $method->name->toString();
-            }
-        }
+        // Parcourt des méthodes de chacune des interfaces
+        foreach ($interfacesMethods as $methods) {
+            foreach ($methods as $caller) {
+                // Trouve la méthode appelante dans la classe
+                /** @var Node\Stmt\ClassMethod|null $methodNode */
+                $methodNode = $finder->findFirst([$classNode], static function ($node) use ($caller) {
+                    return $node instanceof Node\Stmt\ClassMethod
+                        && $node->isPublic()
+                        && $caller === $node->name->toString();
+                });
 
-        // Vérification de l’utilisation d’une autre méthode « public » dans chacune d’elle
-        foreach ($targetClass->getMethods() as $method) {
-            if (!$method->isPublic()) {
-                continue;
-            }
+                if (!$methodNode) {
+                    continue;
+                }
 
-            $stmts = $method->getStmts() ?: [];
-            /** @var list<Node\Expr\MethodCall> $calls */
-            $calls = $finder->findInstanceOf($stmts, Node\Expr\MethodCall::class);
-
-            foreach ($calls as $call) {
-                // var doit être $this
-                if (
-                    $call->var instanceof Node\Expr\Variable
-                    && 'this' === $call->var->name
-                    && $call->name instanceof Node\Identifier
-                ) {
-                    $called = $call->name->toString();
-                    if (
-                        \in_array($called, $publicMethods, true)
-                        && $called !== $method->name->toString()
-                    ) {
-                        return true;
+                // Cherche un appel à $this->callee() où callee ≠ caller et callee ∈ methods
+                $calls = $finder->find($methodNode->stmts ?? [], static function ($node) use ($methods, $caller) {
+                    if (!$node instanceof Node\Expr\MethodCall) {
+                        return false;
                     }
+
+                    $var = $node->var;
+                    $name = $node->name;
+
+                    if (
+                        $var instanceof Node\Expr\Variable
+                        && $var->name === 'this'
+                        && $name instanceof Node\Identifier
+                    ) {
+                        $callee = $name->toString();
+
+                        return $callee !== $caller && \in_array($callee, $methods, true);
+                    }
+
+                    return false;
+                });
+
+                if ($calls) {
+                    return true;
                 }
             }
         }

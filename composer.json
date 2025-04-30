@@ -22,6 +22,10 @@
     {
       "name": "Alexandre Emion",
       "email": "aemion@umanit.fr"
+    },
+    {
+      "name": "Vivien De Bona",
+      "email": "vdebona@umanit.fr"
     }
   ],
   "require": {
