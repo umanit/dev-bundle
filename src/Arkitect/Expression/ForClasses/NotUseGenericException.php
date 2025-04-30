@@ -39,7 +39,8 @@ class NotUseGenericException implements Expression
                         $this->describe($theClass, $because),
                         'use the generic exception class'
                     ),
-                    $dependency->getLine()
+                    $dependency->getLine(),
+                    $theClass->getFilePath(),
                 );
 
                 $violations->add($violation);

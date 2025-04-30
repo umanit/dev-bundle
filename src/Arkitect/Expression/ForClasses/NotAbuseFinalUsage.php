@@ -40,6 +40,7 @@ class NotAbuseFinalUsage implements Expression
         $violation = Violation::create(
             $theClass->getFQCN(),
             ViolationMessage::withDescription($this->describe($theClass, $because), 'is final'),
+            $theClass->getFilePath(),
         );
 
         $violations->add($violation);
