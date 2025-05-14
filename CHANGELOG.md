@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- zenstruck/foundry: force version 2.4.* as our code is not working with 2.5 for now
+
 ## [1.1.0] - 2017-04-30
 
 ### Added

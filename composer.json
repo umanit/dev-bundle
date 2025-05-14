@@ -46,7 +46,7 @@
     "squizlabs/php_codesniffer": "^3.12",
     "symfony/framework-bundle": "^6.4",
     "vincentlanglet/twig-cs-fixer": "^3.5",
-    "zenstruck/foundry": "^2.3",
+    "zenstruck/foundry": "2.4.*",
     "zenstruck/mailer-test": "^1.4",
     "zenstruck/messenger-test": "^1.11"
   },
