@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2025-05-14
+
 ### Fixed
 
 - zenstruck/foundry: force version 2.4.* as our code is not working with 2.5 for now
 
-## [1.1.0] - 2017-04-30
+## [1.1.0] - 2025-04-30
 
 ### Added
 
@@ -44,7 +46,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.0...HEAD
+[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.1...HEAD
+
+[1.1.1]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.0...1.1.1
 
 [1.1.0]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.0.0...1.1.0
 
