@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="UmanIT Coding Standard"
          xsi:noNamespaceSchemaLocation="../vendor/squizlabs/php_codesniffer/phpcs.xsd">
-    <!-- Respect de la PSR12 par défaut -->
+    <!-- Default PSR12 compliance -->
     <rule ref="PSR12" />
 
-    <!-- Interdit l’utilisation de certaines fonctions -->
+    <!-- Prohibits the use of certain PHP functions -->
     <rule ref="Generic.PHP.ForbiddenFunctions">
         <properties>
             <property name="forbiddenFunctions" type="array">
@@ -18,7 +18,7 @@
         </properties>
     </rule>
 
-    <!-- Mise en place des règles de Slevomat -->
+    <!-- Load and configure Slevomat coding standard -->
     <config name="installed_paths" value="../../slevomat/coding-standard" />
 
     <!-- Arrays -->

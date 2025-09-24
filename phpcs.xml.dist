@@ -8,7 +8,7 @@
     <arg name="colors" />
     <arg name="extensions" value="php" />
 
-    <!-- Mise en place des règles UmanIT -->
+    <!-- Configure UmanIT coding standard -->
     <config name="installed_paths" value="../../umanit/dev-bundle/UmanITCodingStandard" />
 
     <rule ref="UmanITCodingStandard" />
