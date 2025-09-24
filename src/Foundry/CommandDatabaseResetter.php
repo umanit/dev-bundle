@@ -24,13 +24,15 @@ final readonly class CommandDatabaseResetter implements OrmResetter
 
     public function __construct(
         private Registry $registry,
-        private string $resetCommand
+        private string $resetCommand,
     ) {
         $databases = [];
+
         /** @var Connection $connection */
         foreach ($this->registry->getConnections() as $name => $connection) {
             // Nécessaire pour éviter d'interférer avec les transactions
             StaticDriver::setKeepStaticConnections(false);
+
             try {
                 /** @var AbstractPlatform $platform */
                 $platform = $connection->getDatabasePlatform();
@@ -47,6 +49,7 @@ final readonly class CommandDatabaseResetter implements OrmResetter
                 $params = $connection->getParams();
                 $databases[$name] = \sprintf("\'%s\'", $params['dbname']);
             }
+
             StaticDriver::setKeepStaticConnections(true);
         }
 
@@ -61,12 +64,6 @@ final readonly class CommandDatabaseResetter implements OrmResetter
         StaticDriver::setKeepStaticConnections(true);
     }
 
-    private function resetDatabase(Application $application): void
-    {
-        $this->dropConnections($application);
-        $this->run($application, $this->resetCommand);
-    }
-
     public function dropConnections(Application $application): void
     {
         $databases = array_map(static fn(string $name) => \sprintf("\'%s\'", $name), $this->databases);
@@ -74,16 +71,26 @@ final readonly class CommandDatabaseResetter implements OrmResetter
 
         $sql = \sprintf(
             'SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN (%s) AND pid <> pg_backend_pid()',
-            $databases
+            $databases,
         );
         $this->run($application, \sprintf("dbal:run-sql '%s'", $sql), true);
+    }
+
+    public function resetBeforeEachTest(KernelInterface $kernel): void
+    {
+    }
+
+    private function resetDatabase(Application $application): void
+    {
+        $this->dropConnections($application);
+        $this->run($application, $this->resetCommand);
     }
 
     private function run(Application $application, string $command, bool $allowFailure = false): int
     {
         $output = new BufferedOutput();
         $exitCode = $application->run(new StringInput($command), $output);
-        if (!$allowFailure && $exitCode !== Command::SUCCESS) {
+        if (!$allowFailure && Command::SUCCESS !== $exitCode) {
             throw new \RuntimeException(\sprintf('Error running %s: %s', $command, $output->fetch()));
         }
 
@@ -96,9 +103,5 @@ final readonly class CommandDatabaseResetter implements OrmResetter
         $application->setAutoExit(false);
 
         return $application;
-    }
-
-    public function resetBeforeEachTest(KernelInterface $kernel): void
-    {
     }
 }

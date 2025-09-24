@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Sniff PHPCS pour n’autoriser que la forme "@todo" pour marquer du code « à faire »
+- Coding Standard PHPCS UmanIT pré-paramétré pour utilisation dans les projets
+
 ## [1.1.1] - 2025-05-14
 
 ### Fixed

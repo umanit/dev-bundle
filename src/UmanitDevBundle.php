@@ -26,7 +26,7 @@ final class UmanitDevBundle extends AbstractBundle
                     ->info(
                         <<<TXT
 Une commande symfony à exécuter pour le ResetDatabase de foundry. Laisser null pour ne pas utiliser le resetter
-TXT
+TXT,
                     )
                     ->defaultNull()
                 ->end()
@@ -40,7 +40,7 @@ TXT
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $command = $config['database_resetter_command'];
-        if ($command !== null) {
+        if (null !== $command) {
             $builder
                 ->register('umanit_dev.orm_resetter', CommandDatabaseResetter::class)
                 ->setDecoratedService(OrmResetter::class)

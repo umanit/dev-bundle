@@ -23,7 +23,7 @@ class NotAbuseFinalUsage implements Expression
     {
         return new Description(
             'should not as at least one of his interface methods calls another one from the same',
-            $because
+            $because,
         );
     }
 
@@ -61,11 +61,12 @@ class NotAbuseFinalUsage implements Expression
         // Collecte les méthodes publiques par interface
         $interfaces = $reflection->getInterfaceNames();
         $interfacesMethods = [];
+
         foreach ($interfaces as $interface) {
             $refInterface = new \ReflectionClass($interface);
             $names = array_map(
                 static fn(\ReflectionMethod $m) => $m->getName(),
-                $refInterface->getMethods()
+                $refInterface->getMethods(),
             );
 
             if (\count($names) > 1) {
@@ -142,7 +143,7 @@ class NotAbuseFinalUsage implements Expression
 
                     if (
                         $var instanceof Node\Expr\Variable
-                        && $var->name === 'this'
+                        && 'this' === $var->name
                         && $name instanceof Node\Identifier
                     ) {
                         $callee = $name->toString();

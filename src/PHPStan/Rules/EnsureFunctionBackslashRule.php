@@ -11,7 +11,7 @@ use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 
 /**
- * @template-implements Rule<Node\Expr\FuncCall>
+ * @implements Rule<FuncCall>
  */
 class EnsureFunctionBackslashRule implements Rule
 {

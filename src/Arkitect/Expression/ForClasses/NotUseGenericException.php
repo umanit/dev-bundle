@@ -24,7 +24,7 @@ class NotUseGenericException implements Expression
         foreach ($theClass->getDependencies() as $dependency) {
             $extends = array_map(
                 static fn(FullyQualifiedClassName $class): string => $class->toString(),
-                $theClass->getExtends()
+                $theClass->getExtends(),
             );
 
             if (
@@ -37,7 +37,7 @@ class NotUseGenericException implements Expression
                     $theClass->getFQCN(),
                     ViolationMessage::withDescription(
                         $this->describe($theClass, $because),
-                        'use the generic exception class'
+                        'use the generic exception class',
                     ),
                     $dependency->getLine(),
                     $theClass->getFilePath(),

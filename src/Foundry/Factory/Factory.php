@@ -10,10 +10,12 @@ use Zenstruck\Foundry\Persistence\Proxy;
 
 /**
  * @template T of object
+ *
  * @extends PersistentProxyObjectFactory<T&Proxy<T>>
  */
 abstract class Factory extends PersistentProxyObjectFactory
 {
+    /** Faux positif @phpstan-ignore-next-line property.readOnlyByPhpDocDefaultValue */
     private static int $incrementalId = 0;
 
     private static Randomizer $randomizer;
