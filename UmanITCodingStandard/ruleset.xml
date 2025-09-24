@@ -228,7 +228,7 @@
     <rule ref="SlevomatCodingStandard.TypeHints.DNFTypeHintFormat" />
     <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints" />
     <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition" />
-    <!-- À revoir à la fin <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue"/> -->
+    <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing" />
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
     <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint" />
