@@ -67,9 +67,12 @@ class EnsureFunctionBackslashRule implements Rule
         return FuncCall::class;
     }
 
+    /**
+     * @param FuncCall $node
+     */
     public function processNode(Node $node, Scope $scope): array
     {
-        if (!$node instanceof FuncCall || !$node->name instanceof Node\Name) {
+        if (!$node->name instanceof Node\Name) {
             return [];
         }
 
@@ -78,9 +81,11 @@ class EnsureFunctionBackslashRule implements Rule
         // Vérifie si la fonction est dans la liste et n’a pas de backslash
         if (\in_array($function, self::OPTIMIZED_FUNCTIONS, true) && !$node->name->isFullyQualified()) {
             return [
-                RuleErrorBuilder::message(
-                    \sprintf('La fonction « %s » doit être précédée d’un backslash.', $function)
-                )->build(),
+                RuleErrorBuilder
+                    ::message(\sprintf('La fonction « %s » doit être précédée d’un backslash.', $function))
+                    ->identifier('umanit.ensureFunctionBackslash')
+                    ->build()
+                ,
             ];
         }
 

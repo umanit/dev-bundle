@@ -1,4 +1,18 @@
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-doctrine/rules.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-symfony/rules.neon
+
+rules:
+    - Umanit\DevBundle\PHPStan\Rules\EnsureFunctionBackslashRule
+    - Umanit\DevBundle\PHPStan\Rules\NoWhereOnQueryBuilderRule
+
 parameters:
+    bootstrapFiles:
+        - vendor/squizlabs/php_codesniffer/autoload.php
+        - vendor/squizlabs/php_codesniffer/src/Util/Tokens.php
     level: 9
     paths:
         - src/
+        - UmanITCodingStandard
