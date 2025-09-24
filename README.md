@@ -40,7 +40,11 @@ $rules[] = Rule
 
 ## Foundry
 
-@todo
+Various tools to ease tests creation:
+
+* A database reseter usable as a Symfony command.
+* Some utilities function to ease the creation of entities.
+* Possibility to use aliases on Doctrine entities within factories.
 
 ## PHPStan
 

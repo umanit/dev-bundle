@@ -15,7 +15,7 @@ use Zenstruck\Foundry\Persistence\Proxy;
  */
 abstract class Factory extends PersistentProxyObjectFactory
 {
-    /** Faux positif @phpstan-ignore-next-line property.readOnlyByPhpDocDefaultValue */
+    /** False positive @phpstan-ignore-next-line property.readOnlyByPhpDocDefaultValue */
     private static int $incrementalId = 0;
 
     private static Randomizer $randomizer;
