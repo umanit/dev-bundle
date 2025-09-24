@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2025-09-24
+
 ### Added
 
 - Sniff PHPCS pour n’autoriser que la forme "@todo" pour marquer du code « à faire »
 - Coding Standard PHPCS UmanIT pré-paramétré pour utilisation dans les projets
+
+### Changed
+
+- Passage à PHPStan 2
 
 ## [1.1.1] - 2025-05-14
 
@@ -51,7 +57,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.1...HEAD
+[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/2.0.0...HEAD
+
+[2.0.0]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.1...2.0.0
 
 [1.1.1]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.0...1.1.1
 
