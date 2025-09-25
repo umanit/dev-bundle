@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2025-09-25
+
 ### Added
 
 - Allow PHPUnit `protected function tearDown` before all others, as `protected function setUp`
@@ -61,7 +63,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/2.0.0...HEAD
+[Unreleased]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/2.0.1...HEAD
+
+[2.0.1]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/2.0.0...2.0.1
 
 [2.0.0]: https://holygit.umanit.fr/umanit/dev-bundle/-/compare/1.1.1...2.0.0
 
