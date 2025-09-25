@@ -43,7 +43,7 @@
     <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
         <properties>
             <property name="methodGroups" type="array">
-                <element key="phpunit before" value="setUp, #PHPUnit\Framework\Attributes\Before" />
+                <element key="phpunit" value="setUp, tearDown" />
             </property>
 
             <property name="groups" type="array">
@@ -57,8 +57,8 @@
                 <!-- public, protected then private properties (static then non static) -->
                 <element value="properties" />
 
-                <!-- PHPUnit's before hooks are placed before all other public methods using a custom method group -->
-                <element value="phpunit before" />
+                <!-- PHPUnit's setUp/tearDown methods are placed before all other groups -->
+                <element value="phpunit" />
 
                 <element value="constructor" />
                 <element value="static constructors" />
