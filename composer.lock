@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "faa257ba0b6437062ae6743746e9a850",
+    "content-hash": "40df52363e7b698541b7950aece62e7f",
     "packages": [
         {
             "name": "amphp/amp",
@@ -10134,6 +10134,49 @@
                 }
             ],
             "time": "2025-05-03T07:21:55+00:00"
+        },
+        {
+            "name": "umanit/coding-standard",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/umanit/php-coding-standard.git",
+                "reference": "b84e6ec986dd97911f10bc93db07a9956eca957c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/umanit/php-coding-standard/zipball/b84e6ec986dd97911f10bc93db07a9956eca957c",
+                "reference": "b84e6ec986dd97911f10bc93db07a9956eca957c",
+                "shasum": ""
+            },
+            "require": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.1",
+                "php": "^8.2",
+                "slevomat/coding-standard": "^8.24",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "autoload": {
+                "psr-4": {
+                    "UmanITCodingStandard\\": "UmanITCodingStandard/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vivien DE BONA",
+                    "email": "vdebona@umanit.fr"
+                }
+            ],
+            "description": "UmanIT PHP Coding Standard",
+            "support": {
+                "issues": "https://github.com/umanit/php-coding-standard/issues",
+                "source": "https://github.com/umanit/php-coding-standard/tree/1.0.0"
+            },
+            "time": "2025-09-26T16:52:33+00:00"
         },
         {
             "name": "vincentlanglet/twig-cs-fixer",

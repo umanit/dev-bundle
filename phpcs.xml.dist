@@ -11,6 +11,5 @@
     <rule ref="UmanITCodingStandard" />
 
     <file>src/</file>
-    <file>UmanITCodingStandard/</file>
     <file>tests/</file>
 </ruleset>
