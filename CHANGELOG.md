@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- [PHPCS] Update to version 4
+- [PHPCS] PHPUnit data provider methods are the latest in the file
+
 ## [2.0.1] - 2025-09-25
 
 ### Added

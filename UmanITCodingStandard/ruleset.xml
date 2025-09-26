@@ -43,7 +43,8 @@
     <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
         <properties>
             <property name="methodGroups" type="array">
-                <element key="phpunit" value="setUp, tearDown" />
+                <element key="phpunit hooks" value="setUp, tearDown" />
+                <element key="phpunit data provider" value="*DataProvider" />
             </property>
 
             <property name="groups" type="array">
@@ -58,7 +59,7 @@
                 <element value="properties" />
 
                 <!-- PHPUnit's setUp/tearDown methods are placed before all other groups -->
-                <element value="phpunit" />
+                <element value="phpunit hooks" />
 
                 <element value="constructor" />
                 <element value="static constructors" />
@@ -76,6 +77,9 @@
                 <element value="all public methods" />
                 <element value="all protected methods" />
                 <element value="all private methods" />
+
+                <!-- PHPUnit's data providers are last -->
+                <element value="phpunit data provider" />
             </property>
         </properties>
     </rule>
