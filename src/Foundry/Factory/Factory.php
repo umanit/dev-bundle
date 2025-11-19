@@ -6,7 +6,6 @@ namespace Umanit\DevBundle\Foundry\Factory;
 
 use Umanit\DevBundle\Foundry\Randomizer\Randomizer;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
-use Zenstruck\Foundry\Persistence\Proxy;
 
 /**
  * @template T of object
