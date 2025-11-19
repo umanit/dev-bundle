@@ -11,7 +11,7 @@ use Zenstruck\Foundry\Persistence\Proxy;
 /**
  * @template T of object
  *
- * @extends PersistentProxyObjectFactory<T&Proxy<T>>
+ * @extends PersistentProxyObjectFactory<T>
  */
 abstract class Factory extends PersistentProxyObjectFactory
 {
