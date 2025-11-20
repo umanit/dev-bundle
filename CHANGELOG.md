@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.4] - 2025-11-19
+
 ### Fixed
 
 - Fix Phpstan generics for AliasedFactory
@@ -102,7 +104,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/2.1.3...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/2.1.4...HEAD
+
+[2.1.4]: https://github.com/umanit/dev-bundle/compare/2.1.3...2.1.4
 
 [2.1.3]: https://github.com/umanit/dev-bundle/compare/2.1.2...2.1.3
 
