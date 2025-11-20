@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Umanit\DevBundle\Foundry\Factory;
 
-use Zenstruck\Foundry\Persistence\Proxy;
-
 /**
  * @template T of object
  *
- * @extends Factory<T&Proxy<T>>
+ * @extends Factory<T>
  */
 abstract class AliasedFactory extends Factory
 {
