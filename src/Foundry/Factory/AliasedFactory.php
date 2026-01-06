@@ -13,8 +13,14 @@ abstract class AliasedFactory extends Factory
 {
     abstract protected static function getEntityIdentifier(): string;
 
+    /**
+     * @return class-string<T>
+     */
     public static function class(): string
     {
-        return AliasedFactoryHelper::getClass(static::getEntityIdentifier());
+        /** @var class-string<T> $class */
+        $class = AliasedFactoryHelper::getClass(static::getEntityIdentifier());
+
+        return $class;
     }
 }

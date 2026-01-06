@@ -23,6 +23,7 @@ grumphp:
             parse_constant: true
         phpstan:
             configuration: ./phpstan.dist.neon
+            use_grumphp_paths: false
         phpcs:
             standard: [phpcs.xml.dist]
             report_width: 120
