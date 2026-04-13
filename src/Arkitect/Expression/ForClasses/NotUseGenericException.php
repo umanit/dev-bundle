@@ -12,7 +12,7 @@ use Arkitect\Rules\Violation;
 use Arkitect\Rules\ViolationMessage;
 use Arkitect\Rules\Violations;
 
-class NotUseGenericException implements Expression
+final readonly class NotUseGenericException implements Expression
 {
     public function describe(ClassDescription $theClass, string $because): Description
     {

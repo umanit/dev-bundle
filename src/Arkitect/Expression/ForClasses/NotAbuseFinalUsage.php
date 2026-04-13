@@ -17,7 +17,7 @@ use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor;
 use PhpParser\ParserFactory;
 
-class NotAbuseFinalUsage implements Expression
+final readonly class NotAbuseFinalUsage implements Expression
 {
     public function describe(ClassDescription $theClass, string $because): Description
     {

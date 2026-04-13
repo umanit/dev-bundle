@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.5] - 2026-04-13
+
+### Added
+
+- New PHPArkitect rule that prohibits the use of class names in method properties or arguments if an interface exists
+  for that class
+
 ## [2.1.4] - 2025-11-19
 
 ### Fixed
@@ -104,7 +111,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/2.1.4...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/2.1.5...HEAD
+
+[2.1.5]: https://github.com/umanit/dev-bundle/compare/2.1.4...2.1.5
 
 [2.1.4]: https://github.com/umanit/dev-bundle/compare/2.1.3...2.1.4
 
