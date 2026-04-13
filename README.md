@@ -10,6 +10,8 @@ Rules for PHP Arkitect:
 
 * `NotAbuseFinalUsage`: Disallow to use final classes if at least one public method of your class is called in another
   public method of the same class.
+* `NotUseConcreteWhenInterfaceExists`: Disallow the use of a concrete class inside typehint if an interface exists for
+  tha class.
 * `NotUseGenericException`: Disallow the use of generic `\Exception` class.
 
 ### Usage
@@ -28,6 +30,13 @@ $rules[] = Rule
     ->that(new ResideInOneOfTheseNamespaces('App'))
     ->should(new NotUseGenericException())
     ->because('we want to force usage of SPL exceptions or custom ones')
+;
+
+$rules[] = Rule
+    ::allClasses()
+    ->that(new ResideInOneOfTheseNamespaces('App'))
+    ->should(new NotUseConcreteWhenInterfaceExists())
+    ->because('we want to depend on interfaces, not concrete implementations')
 ;
 
 $rules[] = Rule
