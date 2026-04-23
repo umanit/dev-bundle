@@ -54,6 +54,9 @@ Various tools to ease tests creation:
 * A database reseter usable as a Symfony command.
 * Some utilities function to ease the creation of entities.
 * Possibility to use aliases on Doctrine entities within factories.
+* A per-class key/value store accessible via `addToStore`/`getListFromStore` (lists) and `setInStore`/`getFromStore`
+  (scalars), so child factories can accumulate state between persists without declaring static properties (which
+  PHPStan flags on `@immutable` Foundry factories). The store is reset automatically via `ResetInterface`.
 
 ## PHPStan
 

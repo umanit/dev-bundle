@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-04-23
+
+### Added
+
+- foundry: add a per-class key/value store to `Factory` to avoid declaring static properties in child factories
+
 ## [2.1.5] - 2026-04-13
 
 ### Added
@@ -111,7 +117,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/2.1.5...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/2.2.0...HEAD
+
+[2.2.0]: https://github.com/umanit/dev-bundle/compare/2.1.5...2.2.0
 
 [2.1.5]: https://github.com/umanit/dev-bundle/compare/2.1.4...2.1.5
 
