@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-05-21
+
+### Added
+
+- Add PHP 8.4 support
+
+### Removed
+
+- Remove PHP <8.4 support
+
 ### Changed
 
-- Update to PHP 8.4
 - Upgrade Zenstruck Foudry to 2.10
 - Change bundle's Factory to use new Foundry's "PersistentObjectFactory"
 
@@ -129,7 +138,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/2.2.0...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.0.0...HEAD
+
+[3.0.0]: https://github.com/umanit/dev-bundle/compare/2.2.0...3.0.0
 
 [2.2.0]: https://github.com/umanit/dev-bundle/compare/2.1.5...2.2.0
 
