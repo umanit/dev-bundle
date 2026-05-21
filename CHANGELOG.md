@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update to PHP 8.4
+- Upgrade Zenstruck Foudry to 2.10
+- Change bundle's Factory to use new Foundry's "PersistentObjectFactory"
 
 ## [2.2.1] - 2026-04-29
 

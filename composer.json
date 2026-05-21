@@ -50,9 +50,9 @@
     "symfony/framework-bundle": "^6.4|^7.3",
     "umanit/coding-standard": "^1.0",
     "vincentlanglet/twig-cs-fixer": "^3.5",
-    "zenstruck/foundry": "^2.4",
-    "zenstruck/mailer-test": "^1.4",
-    "zenstruck/messenger-test": "^1.11"
+    "zenstruck/foundry": "^2.10",
+    "zenstruck/mailer-test": "^1.5",
+    "zenstruck/messenger-test": "^1.14"
   },
   "config": {
     "allow-plugins": {

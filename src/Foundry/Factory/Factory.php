@@ -6,14 +6,14 @@ namespace Umanit\DevBundle\Foundry\Factory;
 
 use Symfony\Contracts\Service\ResetInterface;
 use Umanit\DevBundle\Foundry\Randomizer\Randomizer;
-use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
  * @template T of object
  *
- * @extends PersistentProxyObjectFactory<T>
+ * @extends PersistentObjectFactory<T>
  */
-abstract class Factory extends PersistentProxyObjectFactory implements ResetInterface
+abstract class Factory extends PersistentObjectFactory implements ResetInterface
 {
     private static Randomizer $randomizer;
 
