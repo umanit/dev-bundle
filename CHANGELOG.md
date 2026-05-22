@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.1] - 2026-05-22
+
 ### Added
 
 - Add `phpstan/phpstan-deprecation-rules` dependency
@@ -142,7 +144,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.0.1...HEAD
+
+[3.0.1]: https://github.com/umanit/dev-bundle/compare/3.0.0...3.0.1
 
 [3.0.0]: https://github.com/umanit/dev-bundle/compare/2.2.0...3.0.0
 
