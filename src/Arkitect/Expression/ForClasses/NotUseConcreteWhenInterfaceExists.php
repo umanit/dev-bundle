@@ -171,7 +171,7 @@ final readonly class NotUseConcreteWhenInterfaceExists implements Expression
     private function extractTypeNames(Node $typeNode, array &$result): void
     {
         if ($typeNode instanceof Node\Name\FullyQualified) {
-            $result[] = ['fqcn' => $typeNode->toString(), 'line' => $typeNode->getLine()];
+            $result[] = ['fqcn' => $typeNode->toString(), 'line' => $typeNode->getStartLine()];
 
             return;
         }
