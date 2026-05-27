@@ -37,11 +37,11 @@ TXT,
     /**
      * @param array<string, mixed> $config
      */
-    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
+    public function loadExtension(array $config, ContainerConfigurator $configurator, ContainerBuilder $container): void
     {
         $command = $config['database_resetter_command'];
         if (null !== $command) {
-            $builder
+            $container
                 ->register('umanit_dev.orm_resetter', CommandDatabaseResetter::class)
                 ->setDecoratedService(OrmResetter::class)
                 ->setArguments([new Reference('doctrine'), $command])

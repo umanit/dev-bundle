@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add Rector as a dependency
+- Add a PHPStan rule to detect PSR-3 violation: If an "Exception" object is passed in the context data, it MUST be in
+  the 'exception' key.
+- Add a Rector rule to fix PSR-3 violation: If an "Exception" object is passed in the context data, it MUST be in the
+  'exception' key.
+
 ## [3.0.1] - 2026-05-22
 
 ### Added

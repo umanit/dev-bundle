@@ -17,10 +17,6 @@ grumphp:
             max_body_width: 80
             max_subject_width: 80
             enforce_capitalized_subject: false
-        yamllint:
-            ignore_patterns: ['vendor']
-            parse_custom_tags: true
-            parse_constant: true
         phpstan:
             configuration: ./phpstan.dist.neon
             use_grumphp_paths: false
