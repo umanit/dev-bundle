@@ -75,6 +75,27 @@ rules:
     - Umanit\DevBundle\PHPStan\Rules\NoWhereOnQueryBuilderRule
 ```
 
+## TestEventDispatcher
+
+A test double for Symfony's `EventDispatcher` that records all dispatched events so they can be inspected and asserted
+on in tests without triggering real listeners.
+
+### Usage
+
+Bind `TestEventDispatcher` as the `EventDispatcherInterface` service in your test environment, then assert on the
+events after the action under test:
+
+```php
+$event = $dispatcher->getLastDispatchedEvent(MyEvent::class);
+$this->assertInstanceOf(MyEvent::class, $event);
+
+// All events dispatched under a given name
+$events = $dispatcher->getDispatchedEvents(MyEvent::class);
+
+// Full map of every dispatched event
+$all = $dispatcher->getAllDispatchedEvents();
+```
+
 ## TestUtils
 
 One static method `TestUtils::setId` to set the id of an entity by reflection. Useful for tests when your entities do
