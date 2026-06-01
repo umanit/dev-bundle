@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `TestEventDispatcher`, a test double for Symfony's `EventDispatcher` that records dispatched events so they can
+  be inspected and asserted on in tests without triggering real listeners
+
 ## [2.2.1] - 2026-04-29
 
 ### Added
