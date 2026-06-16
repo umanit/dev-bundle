@@ -63,6 +63,7 @@ Various tools to ease tests creation:
 Rules for PHPStan:
 
 * `EnsureFunctionBackslashRule`: Ensure that some optimizable functions are called with backslash.
+* `MonologExceptionContextKey`: Ensure that an exception inside a Monolog context use the `exception` key.
 * `NoWhereOnQueryBuilderRule`: Disallow to use `where` method on `QueryBuilder` in favor of `andWhere`.
 
 ### Usage
