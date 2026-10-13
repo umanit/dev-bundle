@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.2.1] - 2026-10-13
+
 ### Fixed
 
 - foundry: fix the malformed SQL query used by `CommandDatabaseResetter` to terminate remaining database connections
@@ -166,7 +168,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.2.0...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.2.1...HEAD
+
+[3.2.1]: https://github.com/umanit/dev-bundle/compare/3.2.0...3.2.1
 
 [3.2.0]: https://github.com/umanit/dev-bundle/compare/3.1.0...3.2.0
 
