@@ -2,17 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres
+to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Fixed
+
+- foundry: fix the malformed SQL query used by `CommandDatabaseResetter` to terminate remaining database connections
+  (database names were quoted twice), which prevented the database drop from succeeding
 
 ## [3.2.0] - 2026-06-01
 
 ### Added
 
-- Add `TestEventDispatcher`, a test double for Symfony's `EventDispatcher` that records dispatched events so they can
-  be inspected and asserted on in tests without triggering real listeners
+- Add `TestEventDispatcher`, a test double for Symfony's `EventDispatcher` that records dispatched events so they can be
+  inspected and asserted on in tests without triggering real listeners
 
 ## [3.1.0] - 2026-05-27
 

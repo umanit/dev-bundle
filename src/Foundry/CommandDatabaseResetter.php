@@ -7,7 +7,6 @@ namespace Umanit\DevBundle\Foundry;
 use DAMA\DoctrineTestBundle\Doctrine\DBAL\StaticDriver;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\StringInput;
@@ -34,20 +33,18 @@ final readonly class CommandDatabaseResetter implements OrmResetter
             StaticDriver::setKeepStaticConnections(false);
 
             try {
-                /** @var AbstractPlatform $platform */
-                $platform = $connection->getDatabasePlatform();
                 $databaseName = $connection->getDatabase();
                 if (!$databaseName) {
                     throw new \RuntimeException('Database name cannot be inferred.');
                 }
-                $databases[$name] = $platform->quoteStringLiteral($databaseName);
+                $databases[$name] = $databaseName;
                 $connection->close();
             } catch (\Exception) {
                 // Si on n'arrive pas à récupérer le nom de la base de donnée de manière officielle,
                 // On se rabat sur le fonctionnement interne de doctrine (moins stable)
                 /** @var array{dbname: string} $params */
                 $params = $connection->getParams();
-                $databases[$name] = \sprintf("\'%s\'", $params['dbname']);
+                $databases[$name] = $params['dbname'];
             }
 
             StaticDriver::setKeepStaticConnections(true);
@@ -66,14 +63,19 @@ final readonly class CommandDatabaseResetter implements OrmResetter
 
     public function dropConnections(Application $application): void
     {
-        $databases = array_map(static fn(string $name) => \sprintf("\'%s\'", $name), $this->databases);
+        $databases = array_map(
+            static fn(string $name) => \sprintf("'%s'", str_replace("'", "''", $name)),
+            $this->databases,
+        );
         $databases = implode(', ', $databases);
 
         $sql = \sprintf(
             'SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN (%s) AND pid <> pg_backend_pid()',
             $databases,
         );
-        $this->run($application, \sprintf("dbal:run-sql '%s'", $sql), true);
+
+        // Le SQL est entouré de guillemets doubles car il contient déjà des guillemets simples
+        $this->run($application, \sprintf('dbal:run-sql "%s"', addcslashes($sql, '"\\')), true);
     }
 
     public function resetBeforeEachTest(KernelInterface $kernel): void
