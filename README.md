@@ -47,6 +47,36 @@ $rules[] = Rule
 ;
 ```
 
+### Standard rules
+
+`UmanitRules` builds the standard UmanIT rules, so a project does not have to copy them:
+
+```php
+use Umanit\DevBundle\Arkitect\UmanitRules;
+
+return static function (Config $config): void {
+    $classSet = ClassSet::fromDir(__DIR__ . '/src');
+
+    $config->add($classSet, ...UmanitRules::all(['App']));
+};
+```
+
+* `UmanitRules::namingRules()`: uniform naming of controllers, commands, subscribers, form classes and repositories,
+  based on the sub-namespace (`App\Controller\`, `App\Command\`, etc.), and no `Enum` suffix.
+* `UmanitRules::codebaseRules()`: no generic `\Exception`, no abuse of `final`.
+* `UmanitRules::all()`: both of them.
+
+Each method takes the root namespaces to check, and an optional list of classes to ignore, indexed by rule identifier
+(`UmanitRules::FORM_NAMING`, etc.). Project-specific rules are still added with `Rule::allClasses()`.
+
+## Twig-CS-Fixer
+
+`ConfigFactory` builds the standard configuration. In your `.twig-cs-fixer.dist.php`:
+
+```php
+return \Umanit\DevBundle\TwigCsFixer\ConfigFactory::create(['templates/']);
+```
+
 ## GrumPHP
 
 `shared-config/grumphp/base.yml` declares the usual tasks (composer, phplint, git_blacklist, git_commit_message,
@@ -64,12 +94,28 @@ grumphp:
         EXEC_GRUMPHP_COMMAND: symfony php
 ```
 
+Some tasks assume a configuration file at the root of the project (`phparkitect.php` for `phparkitect`, `phpstan.dist.neon`
+for `phpstan`, `phpcs.xml.dist` for `phpcs`) and fail without it. A project that does not want one of the inherited tasks
+can disable it:
+
+```yaml
+grumphp:
+    tasks:
+        phparkitect:
+            metadata:
+                enabled: false
+```
+
 ## PHP_CodeSniffer
 
 `shared-config/phpcs/ruleset.xml` applies the UmanIT coding standard and excludes the files managed by Symfony.
-Reference it from your `phpcs.xml.dist`, which still declares the `<file>` entries to analyze:
+Reference it from your `phpcs.xml.dist`, which still declares the `<file>` entries to analyze, and the `basepath` and
+`cache` arguments (they are resolved from the directory of the ruleset declaring them, so they cannot be shared):
 
 ```xml
+
+<arg name="basepath" value="." />
+<arg name="cache" value=".phpcs-cache" />
 
 <rule ref="vendor/umanit/dev-bundle/shared-config/phpcs/ruleset.xml" />
 
