@@ -47,6 +47,36 @@ $rules[] = Rule
 ;
 ```
 
+## GrumPHP
+
+`shared-config/grumphp/base.yml` declares the usual tasks (composer, phplint, git_blacklist, git_commit_message,
+yamllint, phpstan, phpcs, phparkitect, phpunit, rector, twigcsfixer). Import it from your `grumphp.yml.dist`; the
+tasks are merged with yours, so you can add or override any of them:
+
+```yaml
+imports:
+    - { resource: vendor/umanit/dev-bundle/shared-config/grumphp/base.yml }
+
+grumphp:
+    tasks:
+        eslint: ~
+    git_hook_variables:
+        EXEC_GRUMPHP_COMMAND: symfony php
+```
+
+## PHP_CodeSniffer
+
+`shared-config/phpcs/ruleset.xml` applies the UmanIT coding standard and excludes the files managed by Symfony.
+Reference it from your `phpcs.xml.dist`, which still declares the `<file>` entries to analyze:
+
+```xml
+
+<rule ref="vendor/umanit/dev-bundle/shared-config/phpcs/ruleset.xml" />
+
+<file>src/</file>
+<file>tests/</file>
+```
+
 ## Foundry
 
 Various tools to ease tests creation:

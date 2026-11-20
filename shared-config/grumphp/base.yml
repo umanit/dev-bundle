@@ -1,0 +1,43 @@
+# Shared UmanIT GrumPHP configuration.
+#
+# Usage, from a project's grumphp.yml.dist:
+#
+#   imports:
+#       - { resource: vendor/umanit/dev-bundle/shared-config/grumphp/base.yml }
+#
+# Tasks are merged with the ones declared by the project, which can add or override any of them.
+grumphp:
+    tasks:
+        composer:
+            no_check_publish: true
+        phplint:
+            exclude: ['vendor']
+            triggered_by: ['php']
+        git_blacklist:
+            keywords:
+                - 'die('
+                - 'var_dump('
+                - 'dump('
+                - '^dd('
+                - 'exit;'
+            triggered_by: ['php', 'twig']
+            ignore_patterns: ['/^config\/reference\.php$/']
+        git_commit_message:
+            max_body_width: 80
+            max_subject_width: 80
+            enforce_capitalized_subject: false
+        yamllint:
+            ignore_patterns: ['vendor']
+            parse_custom_tags: true
+            parse_constant: true
+        phpstan:
+            configuration: ./phpstan.dist.neon
+            use_grumphp_paths: false
+        phpcs:
+            standard: [phpcs.xml.dist]
+            report_width: 120
+        phparkitect: ~
+        phpunit: ~
+        rector:
+            ignore_patterns: ['/^config\/(reference|bundles)\.php$/']
+        twigcsfixer: ~

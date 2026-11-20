@@ -12,6 +12,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Add shared PHPStan configurations: `shared-config/phpstan/base.neon` (Doctrine and Symfony extensions, UmanIT custom rules, default
   level) and `shared-config/phpstan/deprecation.neon` (optional deprecation rules), to be included from a project's
   `phpstan.dist.neon` instead of copying them
+- Add a shared GrumPHP configuration (`shared-config/grumphp/base.yml`, to `imports`) and a shared PHP_CodeSniffer
+  ruleset (`shared-config/phpcs/ruleset.xml`, to reference with `<rule ref="...">`)
 
 ## [3.2.1] - 2026-10-13
 

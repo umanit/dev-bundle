@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Shared UmanIT PHP_CodeSniffer ruleset.
+
+    Usage, from a project's phpcs.xml.dist:
+
+        <rule ref="vendor/umanit/dev-bundle/shared-config/phpcs/ruleset.xml" />
+
+    The project must declare the files to analyze (<file>), as well as the "basepath" and "cache" arguments: they are
+    resolved from the directory of the ruleset that declares them, so they would point inside vendor/ from here.
+-->
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <arg name="colors" />
+    <arg name="extensions" value="php" />
+
+    <rule ref="UmanITCodingStandard" />
+
+    <!-- Files generated or managed by Symfony, and tooling -->
+    <exclude-pattern>config/(bundles|preload|reference).php</exclude-pattern>
+    <exclude-pattern>mate/</exclude-pattern>
+    <exclude-pattern>tests/(bootstrap|console-application).php</exclude-pattern>
+</ruleset>
