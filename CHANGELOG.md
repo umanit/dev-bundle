@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.3.0] - 2026-11-20
+
 ### Added
 
 - Add shared PHPStan configurations: `shared-config/phpstan/base.neon` (Doctrine and Symfony extensions, UmanIT custom
@@ -180,7 +182,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.2.1...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.3.0...HEAD
+
+[3.3.0]: https://github.com/umanit/dev-bundle/compare/3.2.1...3.3.0
 
 [3.2.1]: https://github.com/umanit/dev-bundle/compare/3.2.0...3.2.1
 
