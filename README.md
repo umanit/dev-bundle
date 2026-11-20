@@ -68,13 +68,27 @@ Rules for PHPStan:
 
 ### Usage
 
-Edit your `phpstan.neon` file to include the following:
+Include the shared configurations instead of copying them in each project:
+
+* `shared-config/phpstan/base.neon`: Doctrine and Symfony extensions, the three rules above and a default `level` (8).
+* `shared-config/phpstan/deprecation.neon`: optional, reports usages of deprecated code.
 
 ```neon
-rules:
-    - Umanit\DevBundle\PHPStan\Rules\EnsureFunctionBackslashRule
-    - Umanit\DevBundle\PHPStan\Rules\NoWhereOnQueryBuilderRule
+includes:
+    - vendor/umanit/dev-bundle/shared-config/phpstan/base.neon
+    - vendor/umanit/dev-bundle/shared-config/phpstan/deprecation.neon # optional
+
+parameters:
+    level: 6 # overrides the default
+    paths:
+        - src/
+        - tests/
 ```
+
+`paths`, `excludePaths`, `scanDirectories` and project-specific `ignoreErrors` stay in the project: relative paths
+are resolved from the file that declares them.
+
+To use the rules alone, declare them under `rules:` in your `phpstan.neon`.
 
 ## TestEventDispatcher
 

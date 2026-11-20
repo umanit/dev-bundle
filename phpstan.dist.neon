@@ -1,13 +1,6 @@
 includes:
-    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
-    - vendor/phpstan/phpstan-doctrine/extension.neon
-    - vendor/phpstan/phpstan-doctrine/rules.neon
-    - vendor/phpstan/phpstan-symfony/extension.neon
-    - vendor/phpstan/phpstan-symfony/rules.neon
-
-rules:
-    - Umanit\DevBundle\PHPStan\Rules\EnsureFunctionBackslashRule
-    - Umanit\DevBundle\PHPStan\Rules\NoWhereOnQueryBuilderRule
+    - shared-config/phpstan/base.neon
+    - shared-config/phpstan/deprecation.neon
 
 parameters:
     bootstrapFiles:

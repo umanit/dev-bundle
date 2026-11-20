@@ -1,0 +1,37 @@
+# Shared UmanIT PHPStan configuration.
+#
+# Usage, from a project's phpstan.dist.neon:
+#
+#   includes:
+#       - vendor/umanit/dev-bundle/shared-config/phpstan/base.neon
+#
+# Paths to other packages are built from %rootDir% (vendor/phpstan/phpstan) so they stay valid whether this file is read
+# from vendor/ or from the dev-bundle repository itself.
+includes:
+    - %rootDir%/../../phpstan/phpstan-doctrine/extension.neon
+    - %rootDir%/../../phpstan/phpstan-doctrine/rules.neon
+    - %rootDir%/../../phpstan/phpstan-symfony/extension.neon
+    - %rootDir%/../../phpstan/phpstan-symfony/rules.neon
+
+rules:
+    - Umanit\DevBundle\PHPStan\Rules\EnsureFunctionBackslashRule
+    - Umanit\DevBundle\PHPStan\Rules\NoWhereOnQueryBuilderRule
+    - Umanit\DevBundle\PHPStan\Rules\MonologExceptionContextKeyRule
+
+parameters:
+    # Default value, override it in the project if needed.
+    level: 8
+    excludePaths:
+        # Files generated or managed by Symfony. Wildcard patterns, because paths relative to this file would not resolve
+        # to the project and PHPStan cannot validate excludePaths built from parameters.
+        - */config/bundles.php
+        - */config/preload.php
+        - */config/reference.php
+        - */tests/bootstrap.php
+    symfony:
+        constantHassers: false
+    scanFiles:
+        - %rootDir%/../../symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php
+    ignoreErrors:
+        - message: '#Method Doctrine\\ORM\\QueryBuilder::select\(\) invoked with \d+ parameters, 0-1 required\.#'
+          reportUnmatched: false

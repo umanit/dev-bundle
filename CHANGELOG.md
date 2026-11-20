@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Add shared PHPStan configurations: `shared-config/phpstan/base.neon` (Doctrine and Symfony extensions, UmanIT custom rules, default
+  level) and `shared-config/phpstan/deprecation.neon` (optional deprecation rules), to be included from a project's
+  `phpstan.dist.neon` instead of copying them
+
 ## [3.2.1] - 2026-10-13
 
 ### Fixed

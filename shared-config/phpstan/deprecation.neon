@@ -1,0 +1,3 @@
+# Reports usages of deprecated code. Optional: include it in addition to base.neon.
+includes:
+    - %rootDir%/../../phpstan/phpstan-deprecation-rules/rules.neon
