@@ -108,9 +108,11 @@ grumphp:
 
 ## Rector
 
-`UmanitRectorConfig::configure()` returns a Rector builder with the standard UmanIT configuration (PHP 8.4 sets, prepared
-sets, Composer-based sets, attributes, imports and the custom rules). The project only declares its own paths, and can
-still add or skip any rule on the returned builder:
+`UmanitRectorConfig::configure()` returns a Rector builder with the standard UmanIT configuration: PHP 8.4 sets, prepared
+sets (dead code, `instanceof`, PHPUnit and Symfony code quality), Composer-based sets, attributes, imports and the custom
+rules. It skips `EventSubscriberToAttributeRector` (Event Subscribers are kept), `ContainerGetNameToTypeInTestsRector`
+and `IfToNullCoalescingAssignRector`. The project only declares its own paths, and can still add rules or skip others on
+the returned builder:
 
 ```php
 use Umanit\DevBundle\Rector\Config\UmanitRectorConfig;
