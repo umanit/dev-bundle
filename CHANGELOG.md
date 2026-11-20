@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Add `UmanitRectorConfig`, a factory of the standard Rector configuration, usable from a project's `rector.php`
+
 ## [3.3.0] - 2026-11-20
 
 ### Added

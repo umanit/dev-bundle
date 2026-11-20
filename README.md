@@ -106,6 +106,21 @@ grumphp:
                 enabled: false
 ```
 
+## Rector
+
+`UmanitRectorConfig::configure()` returns a Rector builder with the standard UmanIT configuration (PHP 8.4 sets, prepared
+sets, Composer-based sets, attributes, imports and the custom rules). The project only declares its own paths, and can
+still add or skip any rule on the returned builder:
+
+```php
+use Umanit\DevBundle\Rector\Config\UmanitRectorConfig;
+
+return UmanitRectorConfig::configure()
+    ->withPaths([__DIR__ . '/src', __DIR__ . '/tests'])
+    ->withSymfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml')
+;
+```
+
 ## PHP_CodeSniffer
 
 `shared-config/phpcs/ruleset.xml` applies the UmanIT coding standard and excludes the files managed by Symfony.
