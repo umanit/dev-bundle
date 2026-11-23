@@ -7,6 +7,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- `UmanitRectorConfig` now skips the files managed by Symfony and the tooling (`config/(bundles|preload|reference).php`,
+  `mate/`, `tests/(bootstrap|console-application).php`), the same list as the shared PHP_CodeSniffer ruleset
+- The `rector` task of the shared GrumPHP configuration no longer declares `ignore_patterns`: Rector applies those
+  exclusions itself, including on the files GrumPHP passes to it
+
 ## [3.3.1] - 2026-11-20
 
 ### Added

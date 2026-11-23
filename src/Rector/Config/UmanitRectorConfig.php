@@ -51,6 +51,13 @@ final class UmanitRectorConfig
                 'inline_public' => true,
             ])
             ->withSkip([
+                // Files generated or managed by Symfony, and tooling (same list as the shared PHP_CodeSniffer ruleset)
+                '*/config/bundles.php',
+                '*/config/preload.php',
+                '*/config/reference.php',
+                '*/mate/*',
+                '*/tests/bootstrap.php',
+                '*/tests/console-application.php',
                 // Keep Event Subscribers rather than converting them to #[AsEventListener]
                 EventSubscriberToAttributeRector::class,
                 // Allow retrieving a service by its name from the container in tests

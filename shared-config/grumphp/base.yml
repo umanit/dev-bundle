@@ -38,6 +38,5 @@ grumphp:
             report_width: 120
         phparkitect: ~
         phpunit: ~
-        rector:
-            ignore_patterns: ['/^config\/(reference|bundles)\.php$/']
+        rector: ~
         twigcsfixer: ~
