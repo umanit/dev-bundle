@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.3.2] - 2026-11-23
+
 ### Changed
 
 - `UmanitRectorConfig` now skips the files managed by Symfony and the tooling (`config/(bundles|preload|reference).php`,
@@ -199,7 +201,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.3.1...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.3.2...HEAD
+
+[3.3.2]: https://github.com/umanit/dev-bundle/compare/3.3.1...3.3.2
 
 [3.3.1]: https://github.com/umanit/dev-bundle/compare/3.3.0...3.3.1
 
