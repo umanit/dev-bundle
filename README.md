@@ -63,7 +63,10 @@ return static function (Config $config): void {
 
 * `UmanitRules::namingRules()`: uniform naming of controllers, commands, subscribers, form classes and repositories,
   based on the sub-namespace (`App\Controller\`, `App\Command\`, etc.), and no `Enum` suffix.
-* `UmanitRules::codebaseRules()`: no generic `\Exception`, no abuse of `final`.
+* `UmanitRules::codebaseRules()`: no generic `\Exception`.
+
+`NotAbuseFinalUsage` is not part of `UmanitRules`: it is a rule for bundles and application bases, which must stay
+extensible, not for final applications. Add it yourself where it makes sense (see the usage above).
 * `UmanitRules::all()`: both of them.
 
 Each method takes the root namespaces to check, and an optional list of classes to ignore, indexed by rule identifier

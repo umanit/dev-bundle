@@ -15,17 +15,17 @@ class UmanitRulesTest extends TestCase
     {
         $rules = UmanitRules::all(['App']);
 
-        $this->assertCount(8, $rules);
+        $this->assertCount(7, $rules);
         $this->assertContainsOnlyInstancesOf(ArchRule::class, $rules);
         $this->assertCount(6, UmanitRules::namingRules(['App']));
-        $this->assertCount(2, UmanitRules::codebaseRules(['App']));
+        $this->assertCount(1, UmanitRules::codebaseRules(['App']));
     }
 
     public function testClassesCanBeExcludedFromARule(): void
     {
         $rules = UmanitRules::all(['App'], [UmanitRules::FORM_NAMING => ['App\Form\LegacyFieldsAdder']]);
 
-        $this->assertCount(8, $rules);
+        $this->assertCount(7, $rules);
     }
 
     public function testUnknownRuleIdentifierIsRejected(): void

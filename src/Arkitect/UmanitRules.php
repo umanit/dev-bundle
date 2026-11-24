@@ -11,7 +11,6 @@ use Arkitect\Expression\ForClasses\NotHaveNameMatching;
 use Arkitect\Expression\ForClasses\ResideInOneOfTheseNamespaces;
 use Arkitect\Rules\DSL\ArchRule;
 use Arkitect\Rules\Rule;
-use Umanit\DevBundle\Arkitect\Expression\ForClasses\NotAbuseFinalUsage;
 use Umanit\DevBundle\Arkitect\Expression\ForClasses\NotUseGenericException;
 
 /**
@@ -36,7 +35,6 @@ final class UmanitRules
     public const string ENUM_NAMING = 'enum_naming';
     public const string REPOSITORY_NAMING = 'repository_naming';
     public const string GENERIC_EXCEPTION = 'generic_exception';
-    public const string FINAL_USAGE = 'final_usage';
 
     private const array RULES = [
         self::CONTROLLER_NAMING,
@@ -46,7 +44,6 @@ final class UmanitRules
         self::ENUM_NAMING,
         self::REPOSITORY_NAMING,
         self::GENERIC_EXCEPTION,
-        self::FINAL_USAGE,
     ];
 
     private function __construct()
@@ -141,12 +138,6 @@ final class UmanitRules
                 ->that(new ResideInOneOfTheseNamespaces(...$namespaces))
                 ->should(new NotUseGenericException())
                 ->because('we want to force usage of SPL exceptions or custom ones'),
-            Rule
-                ::allClasses()
-                ->except(...($except[self::FINAL_USAGE] ?? []))
-                ->that(new ResideInOneOfTheseNamespaces(...$namespaces))
-                ->should(new NotAbuseFinalUsage())
-                ->because('we want avoid final classes which reduce extensibility'),
         ];
     }
 
