@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.3.3] - 2026-11-24
+
 ### Removed
 
 - `UmanitRules` no longer includes `NotAbuseFinalUsage` (`UmanitRules::FINAL_USAGE` is removed): it is a rule for bundles
@@ -206,7 +208,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Initial release
 
-[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.3.2...HEAD
+[Unreleased]: https://github.com/umanit/dev-bundle/compare/3.3.3...HEAD
+
+[3.3.3]: https://github.com/umanit/dev-bundle/compare/3.3.2...3.3.3
 
 [3.3.2]: https://github.com/umanit/dev-bundle/compare/3.3.1...3.3.2
 
