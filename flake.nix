@@ -2,7 +2,8 @@
   description = "Devshell du projet UmanIT Dev Bundle";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    php-dev-shell.url = "github:DjLeChuck/php-dev-shell";
+    nixpkgs.follows = "php-dev-shell/nixpkgs";
   };
 
   outputs =
